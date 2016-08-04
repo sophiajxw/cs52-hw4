@@ -17,7 +17,10 @@ class Index extends Component {
           return (
             <div key={post.id} className="items">
               <Link to={`/posts/${post.id}`}>
-                <span className="title">{post.title}</span>
+                <div className="title">
+                  <span>{post.title}</span>
+                  <span className="tags">{post.tags}</span>
+                </div>
               </Link>
             </div>
           );

@@ -45,11 +45,14 @@ class NewPost extends Component {
   render() {
     return (
       <div className="input_bar">
+        <h className="newpost">Create A New Post</h>
         <input className="input" value={this.state.title} onChange={this.onTitleChange} placeholder={"title"} />
         <input className="input" value={this.state.tags} onChange={this.onTagsChange} placeholder={"tags"} />
         <input className="input" value={this.state.content} onChange={this.onContentChange} placeholder={"content"} />
-        <span><button className="submit" onClick={this.onSubmitChange}>Submit</button></span>
-        <Link to="/"><button>Cancel</button></Link>
+        <div className="Button">
+          <span><button onClick={this.onSubmitChange}>Submit</button></span>
+          <Link to="/"><button>Cancel</button></Link>
+        </div>
       </div>
     );
   }
