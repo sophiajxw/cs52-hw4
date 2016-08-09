@@ -102,7 +102,7 @@ class ShowPost extends Component {
       );
     } else {
       return (
-        <div className="render_title" onClick={() => this.setState({ isTitleEditing: true, title: this.props.post.title })}> {this.props.post.title} </div>
+        <div className="render_title" onClick={() => this.setState({ isTitleEditing: true, title: this.props.post.title, tags: this.props.post.tags, content: this.props.post.content })}> {this.props.post.title} </div>
       );
     }
   }
@@ -123,7 +123,7 @@ class ShowPost extends Component {
         /></div>);
     } else {
       return (
-        <div className="render_tags" onClick={() => this.setState({ isTagsEditing: true, tags: this.props.post.tags })}> {this.props.post.tags} </div>
+        <div className="render_tags" onClick={() => this.setState({ isTagsEditing: true, tags: this.props.post.tags, content: this.props.post.content, title: this.props.post.title })}> {this.props.post.tags} </div>
       );
     }
   }
@@ -145,7 +145,7 @@ class ShowPost extends Component {
         /></div>);
     } else {
       return (
-        <div onClick={() => this.setState({ isContentEditing: true, content: this.props.post.content })} dangerouslySetInnerHTML={{ __html: marked(this.props.post.content || '') }} />
+        <div onClick={() => this.setState({ isContentEditing: true, content: this.props.post.content, tags: this.props.post.tags, title: this.props.post.title })} dangerouslySetInnerHTML={{ __html: marked(this.props.post.content || '') }} />
       );
     }
   }
