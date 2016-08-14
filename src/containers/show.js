@@ -20,7 +20,6 @@ class ShowPost extends Component {
     this.onTagsEdit = this.onTagsEdit.bind(this);
     this.onContentEdit = this.onContentEdit.bind(this);
 
-
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onTagsChange = this.onTagsChange.bind(this);
     this.onContentChange = this.onContentChange.bind(this);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './nav_bar';
+// import ErrorBar from './err_bar';
 
 // example class based component (smart component)
 class App extends Component {

@@ -3,8 +3,8 @@ body {
   color: rgb(10%, 10%,10%);
   background: lightblue;
   background-image: url("https://s-media-cache-ak0.pinimg.com/736x/e0/83/19/e08319696ce42ef2148ec340e112a520.jpg");
-  margin-left: 150px;
-  margin-right: 200px;
+  margin-left: 50px;
+  margin-right: 50px;
   margin-top: 50px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -37,6 +37,22 @@ a {
     font-size: 20px;
   }
 }
+
+.signin {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 37px;
+  margin-bottom: 30px;
+
+  h {
+    margin-right: auto;
+    margin-left: 50px;
+    font-size: 20px;
+  }
+}
+
 
 .input {
   height: 30px;
