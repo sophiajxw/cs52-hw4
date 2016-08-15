@@ -12,6 +12,7 @@ class ShowPost extends Component {
     this.state = { title: '',
                    tags: '',
                    content: '',
+                   author: '',
                    isTitleEditing: false,
                    isTagsEditing: false,
                    isContentEditing: false,
@@ -156,6 +157,7 @@ class ShowPost extends Component {
           {this.onTitleRender()}
           {this.onTagsRender()}
           {this.onContentRender()}
+          <div>Created by: {this.props.post.author}</div>
           <button onClick={this.onDelete}>Delete</button>
         </div>
     );

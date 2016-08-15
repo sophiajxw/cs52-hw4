@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "axios": "^0.13.1",
+    "dotenv": "^2.0.0",
     "eslint-plugin-react": "^5.2.2",
     "marked": "^0.3.6",
     "react": "^15.2.1",

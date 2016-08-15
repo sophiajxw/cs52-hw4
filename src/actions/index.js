@@ -11,6 +11,7 @@ export const ActionTypes = {
   AUTH_USER: 'AUTH_USER',
   DEAUTH_USER: 'DEAUTH_USER',
   AUTH_ERROR: 'AUTH_ERROR',
+  ERROR_MESSAGE: 'ERROR_MESSAGE',
 };
 
 // const ROOT_URL = 'https://cs52-blog.herokuapp.com/api';
@@ -20,12 +21,21 @@ const ROOT_URL = 'https://hw5p2.herokuapp.com/api';
 
 const API_KEY = '?key=xinwei_jiang';
 
+
+// display an error message when encounters
+export function errorMessage(error) {
+  return (dispatch) => {
+    dispatch({ type: ActionTypes.ERROR_MESSAGE, message: error });
+    setTimeout(() => { dispatch({ type: ActionTypes.ERROR_MESSAGE, message: '' }); }, 3000);
+  };
+}
+
 export function fetchPosts() {
   return (dispatch) => {
     axios.get(`${ROOT_URL}/posts${API_KEY}`).then(response => {
       dispatch({ type: 'FETCH_POSTS', payload: response.data });
     }).catch(error => {
-      console.log('error!');
+      console.log(error);
     });
   };
 }
@@ -96,13 +106,13 @@ export function signinUser({ email, password }) {
       localStorage.setItem('token', response.data.token);
       browserHistory.push('/');
     }).catch(error => {
-      dispatch(authError(`Sign In Failed: ${error.response.data}`));
+      dispatch(errorMessage(`Sign In Failed: ${error.response.data}`));
     });
   };
 }
 
 
-export function signupUser({ email, password }) {
+export function signupUser({ email, password, username }) {
   // takes in an object with email and password (minimal user object)
   // returns a thunk method that takes dispatch as an argument (just like our create post method really)
   // does an axios.post on the /signup endpoint (only difference from above)
@@ -111,12 +121,12 @@ export function signupUser({ email, password }) {
   //  localStorage.setItem('token', response.data.token);
   // on error should dispatch(authError(`Sign Up Failed: ${error.response.data}`));
   return (dispatch) => {
-    axios.post(`${ROOT_URL}/signup/`, { email, password }).then(response => {
+    axios.post(`${ROOT_URL}/signup/`, { email, password, username }).then(response => {
       dispatch({ type: ActionTypes.AUTH_USER });
       localStorage.setItem('token', response.data.token);
       browserHistory.push('/');
     }).catch(error => {
-      dispatch(authError(`Sign Up Failed: ${error.response.data}`));
+      dispatch(errorMessage(`Sign Up Failed: ${error.response.data}`));
     });
   };
 }

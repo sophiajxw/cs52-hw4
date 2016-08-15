@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { signupUser } from '../actions';
+import { signupUser, errorMessage } from '../actions';
 import { Link } from 'react-router';
 
 class Signup extends Component {
@@ -32,13 +32,18 @@ class Signup extends Component {
   }
 
   onSubmitChange(event) {
-    const fields = {
-      email: this.state.email,
-      password: this.state.password,
-    };
     event.preventDefault();
-    this.props.signupUser(fields);
-    console.log(fields);
+    if (this.state.email !== '' && this.state.password !== '') {
+      const fields = {
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password,
+      };
+      this.props.signupUser(fields);
+    } else {
+      this.props.errorMessage('Please make sure you input an email and password. ');
+    }
+    // console.log(fields);
   }
 
   render() {
@@ -65,4 +70,4 @@ const mapStateToProps = (state) => (
   }
 );
 
-export default connect(mapStateToProps, { signupUser })(Signup);
+export default connect(mapStateToProps, { errorMessage, signupUser })(Signup);
